@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synkronis — Automatisation & IA pour PME | Audit Gratuit</title>
+  <meta name="description" content="Synkronis automatise vos processus avec le no-code et l'IA. 35+ projets livrés, ROI dès le 1er mois. Réservez votre audit gratuit de 30 min.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://synkronis.fr">
+  <meta property="og:title" content="Synkronis — Automatisation & IA pour PME">
+  <meta property="og:description" content="Systèmes no-code & IA sur mesure. 35+ projets, ROI garanti dès le 1er mois. Audit gratuit.">
+  <meta property="og:image" content="https://synkronis.fr/og-image.jpg">
+  <meta property="og:url" content="https://synkronis.fr">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Synkronis — Automatisation & IA pour PME">
+  <meta name="twitter:description" content="Systèmes no-code & IA sur mesure. 35+ projets, ROI garanti dès le 1er mois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Synkronis",
+    "description": "Agence d'automatisation et d'intelligence artificielle pour PME françaises.",
+    "url": "https://synkronis.fr",
+    "priceRange": "À partir de 1 500€",
+    "address": { "@type": "PostalAddress", "addressCountry": "FR" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "35" }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #0A0F1E;
+      --bg-card: #111827;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-hover: rgba(0,240,112,0.3);
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0AEC0;
+      --text-muted: #64748B;
+      --accent-green: #00F070;
+      --gradient-main: linear-gradient(135deg, #00F070, #00C85A);
+      --gradient-text: linear-gradient(135deg, #00F070, #00F070);
+      --pain-glow: rgba(239,68,68,0.15);
+      --pain-border: rgba(239,68,68,0.2);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --section-pad: clamp(80px, 10vw, 120px);
+      --container-max: 1200px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body); background: var(--bg-deep);
+      color: var(--text-primary); line-height: 1.6; overflow-x: hidden;
+      cursor: none; animation: pageFadeIn 0.8s var(--ease-out);
+    }
+    @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 200px;
+    }
+
+    /* Cursor */
+    .cursor-dot {
+      position: fixed; width: 8px; height: 8px; background: var(--accent-green);
+      border-radius: 50%; pointer-events: none; z-index: 99999;
+      transition: transform 0.15s var(--ease-out); transform: translate(-50%, -50%); mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(0,240,112,0.3);
+      border-radius: 50%; pointer-events: none; z-index: 99998;
+      transition: transform 0.3s var(--ease-out), width 0.3s, height 0.3s; transform: translate(-50%, -50%);
+    }
+    .cursor-ring.hover { width: 56px; height: 56px; border-color: rgba(0,240,112,0.5); }
+    @media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } body { cursor: auto; } }
+
+    /* Utility */
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
+    a { color: inherit; text-decoration: none; }
+    .section-sep { height: 1px; background: linear-gradient(90deg, transparent, var(--accent-green), transparent); opacity: 0.3; border: none; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700; text-align: center; margin-bottom: 60px; letter-spacing: -0.02em;
+    }
+    .section-title span { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px;
+      background: var(--accent-green); color: var(--bg-deep);
+      font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+      border: none; border-radius: 12px; cursor: none; position: relative; overflow: hidden;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out); z-index: 1;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%); animation: shimmer 3s infinite; z-index: -1;
+    }
+    @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 30px rgba(0,240,112,0.4), 0 0 60px rgba(0,240,112,0.15); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px;
+      background: transparent; color: var(--text-secondary);
+      font-family: var(--font-display); font-size: 1rem; font-weight: 500;
+      border: 1px solid var(--border-subtle); border-radius: 12px; cursor: none;
+      transition: all 0.3s var(--ease-out);
+    }
+    .btn-secondary:hover { border-color: var(--border-hover); color: var(--text-primary); background: rgba(0,240,112,0.05); transform: translateY(-2px); }
+    .btn-large { padding: 20px 48px; font-size: 1.15rem; border-radius: 14px; }
+
+    /* ============================================================
+       INTRO (above video)
+    ============================================================ */
+    .intro-section { padding: 60px 0 40px; text-align: center; position: relative; overflow: hidden; }
+    .intro-section .container { position: relative; z-index: 1; }
+    .intro-glow {
+      position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(0,240,112,0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .intro-logo {
+      display: inline-block; padding: 8px 24px; background: var(--accent-green); color: var(--bg-deep);
+      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+      border-radius: 8px; margin-bottom: 40px; letter-spacing: 0.05em;
+    }
+    .intro-title {
+      font-family: var(--font-display); font-size: clamp(1.75rem, 4.5vw, 3rem);
+      font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+      margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+    .intro-warning { font-size: 2rem; margin-bottom: 20px; }
+    .intro-alert {
+      font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700; line-height: 1.4; max-width: 650px; margin: 0 auto 32px; text-transform: uppercase;
+    }
+    .intro-alert em { color: var(--accent-green); font-style: italic; }
+    .intro-step { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 8px; }
+    .intro-step strong { color: var(--accent-green); font-style: italic; }
+
+    /* ============================================================
+       VIDEO
+    ============================================================ */
+    .video-section { padding: 40px 0 var(--section-pad); }
+    .video-wrapper {
+      position: relative; max-width: 1080px; margin: 0 auto; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border-subtle); box-shadow: var(--shadow-lg), 0 0 80px rgba(0,240,112,0.08);
+      aspect-ratio: 16/9;
+    }
+    .video-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(10,15,30,0.4); transition: opacity 0.4s; cursor: none;
+    }
+    .video-overlay.hidden { opacity: 0; pointer-events: none; }
+    .play-btn {
+      width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-main);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 40px rgba(0,240,112,0.4); transition: transform 0.3s var(--ease-out);
+    }
+    .play-btn:hover { transform: scale(1.1); }
+    .play-btn svg { width: 32px; height: 32px; fill: var(--bg-deep); margin-left: 4px; }
+    .video-speed-controls { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; }
+    .speed-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+    .speed-btn {
+      padding: 6px 16px; border: 1px solid var(--border-subtle); background: transparent;
+      color: var(--text-secondary); font-family: var(--font-display); font-size: 0.85rem;
+      font-weight: 600; border-radius: 8px; cursor: none; transition: all 0.3s var(--ease-out);
+    }
+    .speed-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+    .speed-btn.active { background: var(--accent-green); color: var(--bg-deep); border-color: var(--accent-green); }
+
+    /* ============================================================
+       HERO (below video)
+    ============================================================ */
+    .hero { position: relative; padding: 80px 0; overflow: hidden; }
+    .hero-grid { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+    .hero-grid canvas { width: 100%; height: 100%; }
+    .hero-glow {
+      position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0,240,112,0.1) 0%, rgba(0,240,112,0.04) 40%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; text-align: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px;
+      background: rgba(0,240,112,0.08); border: 1px solid rgba(0,240,112,0.2);
+      border-radius: 100px; font-size: 0.85rem; color: var(--accent-green); margin-bottom: 32px;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    @keyframes badgePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,240,112,0.15); } 50% { box-shadow: 0 0 20px 4px rgba(0,240,112,0.1); } }
+    .hero h1 {
+      font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 .typed-word {
+      background: var(--gradient-text); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; min-width: 200px;
+    }
+    .hero h1 .typed-cursor {
+      display: inline-block; width: 3px; height: 0.9em; background: var(--accent-green);
+      margin-left: 2px; vertical-align: text-bottom; animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-sub { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 620px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 750px; margin: 0 auto; }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700;
+      background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+    @media (max-width: 768px) { .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+
+    /* Marquee */
+    .marquee-section { padding: 48px 0; overflow: hidden; }
+    .marquee-title { text-align: center; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 32px; font-weight: 500; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item { display: flex; align-items: center; gap: 10px; padding: 0 40px; font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--text-muted); white-space: nowrap; transition: color 0.3s; }
+    .marquee-item:hover { color: var(--text-secondary); }
+    .marquee-dot { width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%; opacity: 0.5; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Pain points */
+    .pain-section { padding: var(--section-pad) 0; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pain-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 32px; transition: all 0.4s var(--ease-out); }
+    .pain-card:hover { border-color: var(--pain-border); background: rgba(239,68,68,0.03); box-shadow: 0 0 30px var(--pain-glow); transform: translateY(-4px); }
+    .pain-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .pain-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+    .pain-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+    .pain-cta { text-align: center; margin-top: 48px; }
+    .pain-cta a { color: var(--accent-green); font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; transition: color 0.3s; }
+    @media (max-width: 768px) { .pain-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1199px) { .pain-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Steps */
+    .steps-section { padding: var(--section-pad) 0; }
+    .steps-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+    .steps-timeline::before { content: ''; position: absolute; top: 44px; left: 16.66%; right: 16.66%; height: 2px; background: var(--gradient-main); opacity: 0.3; }
+    .step-item { text-align: center; position: relative; }
+    .step-number { width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-main); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--bg-deep); margin: 0 auto 24px; position: relative; z-index: 1; box-shadow: 0 0 30px rgba(0,240,112,0.3); }
+    .step-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .step-item h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .step-item p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; max-width: 280px; margin: 0 auto; }
+    @media (max-width: 768px) {
+      .steps-timeline { grid-template-columns: 1fr; gap: 48px; }
+      .steps-timeline::before { top: 0; bottom: 0; left: 31px; right: auto; width: 2px; height: auto; }
+      .step-item { text-align: left; padding-left: 88px; }
+      .step-number { position: absolute; left: 0; top: 0; margin: 0; width: 52px; height: 52px; font-size: 1.1rem; }
+    }
+
+    /* Services */
+    .services-section { padding: var(--section-pad) 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 36px 28px; backdrop-filter: blur(8px); transition: all 0.4s var(--ease-out); position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gradient-main); opacity: 0; transition: opacity 0.4s; }
+    .service-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: 0 0 40px rgba(0,240,112,0.1); background: rgba(255,255,255,0.04); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+    .service-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+    .service-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .service-badge { display: inline-block; padding: 5px 14px; background: rgba(0,240,112,0.1); border: 1px solid rgba(0,240,112,0.2); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--accent-green); font-family: var(--font-display); }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+    @media (min-width: 769px) and (max-width: 1199px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Why */
+    .why-section { padding: var(--section-pad) 0; }
+    .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-text h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .why-text h2 span { background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .why-text p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .why-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--border-subtle); background: var(--bg-card); transition: all 0.3s var(--ease-out); }
+    .why-item:hover { border-color: var(--border-hover); background: rgba(0,240,112,0.04); transform: translateX(6px); }
+    .why-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--gradient-main); display: flex; align-items: center; justify-content: center; }
+    .why-check svg { width: 14px; height: 14px; fill: none; stroke: var(--bg-deep); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .why-item span { font-weight: 500; font-size: 0.98rem; }
+    @media (max-width: 768px) { .why-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* CTA Central */
+    .cta-central { padding: var(--section-pad) 0; position: relative; overflow: hidden; }
+    .cta-central-inner { background: linear-gradient(135deg, rgba(0,240,112,0.12), rgba(0,240,112,0.04)); border: 1px solid rgba(0,240,112,0.15); border-radius: 28px; padding: clamp(60px, 8vw, 100px) clamp(24px, 5vw, 60px); text-align: center; position: relative; overflow: hidden; }
+    .cta-central-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(255,255,255,0.06), transparent 60%); pointer-events: none; }
+    .cta-central h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+    .cta-central .cta-sub { font-size: clamp(1rem, 2vw, 1.15rem); opacity: 0.9; max-width: 580px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-central .btn-cta-huge { display: inline-flex; align-items: center; gap: 10px; padding: 22px 52px; background: var(--accent-green); color: var(--bg-deep); font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; border-radius: 14px; border: none; cursor: none; transition: all 0.3s var(--ease-out); position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .cta-central .btn-cta-huge:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 40px rgba(0,240,112,0.3); }
+    .cta-reassurance { margin-top: 20px; font-size: 0.9rem; opacity: 0.8; position: relative; }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ============================================================
+       INTRO (above video)
+  ============================================================ -->
+  <section class="intro-section">
+    <div class="intro-glow"></div>
+    <div class="container">
+      <div class="intro-logo reveal">SYNKRONIS</div>
+      <h1 class="intro-title reveal reveal-delay-1">
+        Bravo pour votre passage à l'action !
+      </h1>
+      <div class="intro-warning reveal reveal-delay-2">&#9888;&#65039;&#9888;&#65039;&#9888;&#65039;</div>
+      <p class="intro-alert reveal reveal-delay-3">
+        Votre demande ne sera pas prise en compte <em>si vous ne réalisez pas ces 3 étapes :</em>
+      </p>
+      <p class="intro-step reveal reveal-delay-4">
+        <strong>Étape 1/3 :</strong> regarder cette courte vidéo
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VIDEO
+  ============================================================ -->
+  <section class="video-section" id="video" aria-label="Vidéo de présentation Synkronis">
+    <div class="container">
+      <div class="video-wrapper reveal">
+        <video id="mainVideo" src="synkronis-vsl.mp4" playsinline controls preload="metadata"
+          aria-label="Présentation Synkronis — Automatisation et IA pour PME"></video>
+        <div class="video-overlay" id="videoOverlay" role="button" aria-label="Lancer la vidéo" tabindex="0">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="video-speed-controls reveal">
+        <span class="speed-label">Vitesse :</span>
+        <button class="speed-btn active" data-speed="1">x1</button>
+        <button class="speed-btn" data-speed="1.2">x1.2</button>
+        <button class="speed-btn" data-speed="1.5">x1.5</button>
+        <button class="speed-btn" data-speed="1.7">x1.7</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ============================================================
+       HERO (below video now)
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid"><canvas id="gridCanvas"></canvas></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-badge reveal"><span>&#10022;</span> Expert Automatisation & IA</div>
+      <h1 class="reveal reveal-delay-1">
+        Automatisez vos processus.<br>
+        Libérez votre <span class="typed-word" id="typedWord"></span><span class="typed-cursor"></span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Je conçois des systèmes no-code & IA sur mesure qui éliminent vos tâches répétitives et génèrent du ROI dès le 1er mois.
+      </p>
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="https://calendly.com/contact-synkronis/30min" class="btn-primary btn-large" target="_blank" rel="noopener">&#128197; Réserver mon audit gratuit</a>
+        <a href="#steps" class="btn-secondary btn-large">Voir comment ça marche &darr;</a>
+      </div>
+      <div class="hero-stats reveal reveal-delay-4">
+        <div class="stat-item"><div class="stat-number" data-target="35">0</div><div class="stat-label">Projets livrés</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="4" data-suffix="h">0</div><div class="stat-label">Économisées / semaine</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="100" data-suffix="%">0</div><div class="stat-label">Satisfaction</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="1" data-suffix="er mois" data-prefix="Dès le ">0</div><div class="stat-label">ROI Garanti</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+  <section class="marquee-section" aria-label="Intégrations partenaires">
+    <p class="marquee-title reveal">Intégrations avec vos outils actuels</p>
+    <div class="marquee-track" aria-hidden="true">
+      <span class="marquee-item">Make <span class="marquee-dot"></span></span>
+      <span class="marquee-item">n8n <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Zapier <span class="marquee-dot"></span></span>
+      <span class="marquee-item">OpenAI <span class="marquee-dot"></span></span>
+      <span class="marquee-item">HubSpot <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Airtable <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Google Workspace <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Make <span class="marquee-dot"></span></span>
+      <span class="marquee-item">n8n <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Zapier <span class="marquee-dot"></span></span>
+      <span class="marquee-item">OpenAI <span class="marquee-dot"></span></span>
+      <span class="marquee-item">HubSpot <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Airtable <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Google Workspace <span class="marquee-dot"></span></span>
+    </div>
+  </section>
+  <div class="section-sep"></div>
+
+  <!-- Pain points -->
+  <section class="pain-section" id="problems" aria-label="Problèmes résolus">
+    <div class="container">
+      <h2 class="section-title reveal">Vous <span>reconnaissez-vous</span> ?</h2>
+      <div class="pain-grid">
+        <div class="pain-card reveal"><span class="pain-icon">&#9203;</span><h3>Tâches chronophages</h3><p>Vous passez des heures sur des tâches répétitives qui pourraient être automatisées en quelques clics.</p></div>
+        <div class="pain-card reveal reveal-delay-1"><span class="pain-icon">&#128184;</span><h3>Erreurs coûteuses</h3><p>Les saisies manuelles génèrent des erreurs qui vous coûtent du temps, de l'argent et de la crédibilité.</p></div>
+        <div class="pain-card reveal reveal-delay-2"><span class="pain-icon">&#128202;</span><h3>Processus lents</h3><p>Vos workflows internes freinent votre croissance au lieu de l'accélérer.</p></div>
+        <div class="pain-card reveal reveal-delay-3"><span class="pain-icon">&#128201;</span><h3>Données inexploitées</h3><p>Vos données dorment dans des tableurs au lieu de guider vos décisions stratégiques.</p></div>
+        <div class="pain-card reveal reveal-delay-4"><span class="pain-icon">&#128260;</span><h3>Suivi client défaillant</h3><p>Des leads tombent entre les mailles du filet faute de relances automatisées.</p></div>
+        <div class="pain-card reveal reveal-delay-5"><span class="pain-icon">&#9200;</span><h3>Charges salariales excessives</h3><p>Vous embauchez pour des tâches qu'un système automatisé exécuterait mieux et moins cher.</p></div>
+      </div>
+      <div class="pain-cta reveal"><a href="#steps">&#128073; Je règle tout ça — découvrez comment</a></div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- Steps -->
+  <section class="steps-section" id="steps" aria-label="Comment ça fonctionne">
+    <div class="container">
+      <h2 class="section-title reveal">Comment ça <span>fonctionne</span></h2>
+      <div class="steps-timeline">
+        <div class="step-item reveal"><div class="step-number">1</div><div class="step-icon">&#128269;</div><h3>J'audite vos processus</h3><p>Un appel gratuit de 45 min pour cartographier vos flux et identifier les gains rapides.</p></div>
+        <div class="step-item reveal reveal-delay-2"><div class="step-number">2</div><div class="step-icon">&#128736;</div><h3>Je conçois votre système</h3><p>En 1 à 3 semaines, je construis vos automatisations sur mesure, testées et documentées.</p></div>
+        <div class="step-item reveal reveal-delay-4"><div class="step-number">3</div><div class="step-icon">&#128640;</div><h3>Vous gagnez du temps</h3><p>Dès le mois 1, vous économisez des heures et voyez un ROI concret sur votre investissement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- Services -->
+  <section class="services-section" id="services" aria-label="Solutions d'automatisation">
+    <div class="container">
+      <h2 class="section-title reveal">Mes solutions <span>d'automatisation</span></h2>
+      <div class="services-grid">
+        <div class="service-card reveal"><span class="service-icon">&#128232;</span><h3>Automatisation Prospection</h3><p>Génération de leads, enrichissement, séquences email — votre machine commerciale tourne sans vous.</p><span class="service-badge">24/7 automatisé</span></div>
+        <div class="service-card reveal reveal-delay-1"><span class="service-icon">&#129309;</span><h3>Relation Client CRM</h3><p>Synchronisation automatique entre vos outils, relances intelligentes et scoring de leads.</p><span class="service-badge">+300% engagement</span></div>
+        <div class="service-card reveal reveal-delay-2"><span class="service-icon">&#129302;</span><h3>IA sur Mesure</h3><p>Agents IA personnalisés qui analysent, résument et prennent des décisions à votre place.</p><span class="service-badge">-60% tâches répétitives</span></div>
+        <div class="service-card reveal reveal-delay-3"><span class="service-icon">&#128172;</span><h3>Chatbot IA</h3><p>Support client 24h/24 avec un chatbot entraîné sur vos données, vos produits et votre ton.</p><span class="service-badge">95% satisfaction</span></div>
+        <div class="service-card reveal reveal-delay-4"><span class="service-icon">&#128196;</span><h3>Facturation & OCR</h3><p>Extraction automatique de données, rapprochement bancaire et génération de factures.</p><span class="service-badge">-90% saisie</span></div>
+        <div class="service-card reveal reveal-delay-5"><span class="service-icon">&#128194;</span><h3>Gestion Documents</h3><p>Classification automatique, recherche intelligente et archivage structuré de tous vos fichiers.</p><span class="service-badge">Recherche instantanée</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- Why -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-text reveal">
+          <h2>Expert en <span>automatisation et architecture IA</span></h2>
+          <p>Je ne vends pas un logiciel. Je conçois un système sur mesure qui s'adapte à votre entreprise, vos outils et vos objectifs. Mon engagement : des résultats mesurables, pas des promesses.</p>
+        </div>
+        <ul class="why-list">
+          <li class="why-item reveal"><div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Expert certifié Make & n8n</span></li>
+          <li class="why-item reveal reveal-delay-1"><div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>ROI mesurable dès le 1er mois</span></li>
+          <li class="why-item reveal reveal-delay-2"><div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>RGPD compliant</span></li>
+          <li class="why-item reveal reveal-delay-3"><div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Support dédié inclus</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- CTA Central -->
+  <section class="cta-central">
+    <div class="container">
+      <div class="cta-central-inner reveal">
+        <h2>Combien coûte une heure perdue en tâches répétitives ?</h2>
+        <p class="cta-sub">Mes clients économisent en moyenne 4h par semaine dès le 1er mois. L'audit est gratuit. La décision vous appartient.</p>
+        <a href="https://calendly.com/contact-synkronis/30min" class="btn-cta-huge" target="_blank" rel="noopener">&#128197; Réserver mon audit offert maintenant &rarr;</a>
+        <p class="cta-reassurance">&#10003; Gratuit &nbsp; &#10003; Sans engagement &nbsp; &#10003; Réponse sous 24h</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* Cursor */
+    const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; dot.style.left = mouseX+'px'; dot.style.top = mouseY+'px'; });
+    function animateRing() { ringX += (mouseX-ringX)*0.15; ringY += (mouseY-ringY)*0.15; ring.style.left = ringX+'px'; ring.style.top = ringY+'px'; requestAnimationFrame(animateRing); }
+    animateRing();
+    document.querySelectorAll('a,button,[role="button"]').forEach(el => { el.addEventListener('mouseenter', () => ring.classList.add('hover')); el.addEventListener('mouseleave', () => ring.classList.remove('hover')); });
+
+    /* Typewriter */
+    const typedEl = document.getElementById('typedWord');
+    const words = ['croissance.','temps.','équipe.'];
+    let wordIdx=0, charIdx=0, deleting=false;
+    function typeLoop() {
+      const c = words[wordIdx];
+      if(!deleting) { typedEl.textContent = c.slice(0,charIdx+1); charIdx++; if(charIdx===c.length){setTimeout(()=>{deleting=true;typeLoop();},2000);return;} setTimeout(typeLoop,100); }
+      else { typedEl.textContent = c.slice(0,charIdx-1); charIdx--; if(charIdx===0){deleting=false;wordIdx=(wordIdx+1)%words.length;setTimeout(typeLoop,400);return;} setTimeout(typeLoop,50); }
+    }
+    typeLoop();
+
+    /* Counters */
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(el => {
+        const target=parseInt(el.dataset.target), suffix=el.dataset.suffix||'', prefix=el.dataset.prefix||'', duration=2000, start=performance.now();
+        function update(now) {
+          const p=Math.min((now-start)/duration,1), eased=1-Math.pow(1-p,3), cur=Math.round(eased*target);
+          if(target===1&&prefix){el.textContent=p>=1?prefix+target+suffix:'';}else{el.textContent=(target>1?cur+(target===35?'+':''): '')+suffix;}
+          if(p<1)requestAnimationFrame(update); else if(target===1&&prefix)el.textContent=prefix+target+suffix;
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    /* Reveal */
+    const ro = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);} }); }, {threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    const ho = new IntersectionObserver(entries => { if(entries[0].isIntersecting){animateCounters();ho.disconnect();} }, {threshold:0.3});
+    ho.observe(document.querySelector('.hero-stats'));
+
+    /* Video */
+    const video = document.getElementById('mainVideo'), overlay = document.getElementById('videoOverlay');
+    function playVideo(){overlay.classList.add('hidden');video.play();}
+    overlay.addEventListener('click', playVideo);
+    overlay.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();playVideo();} });
+    video.addEventListener('click', () => { if(video.paused){video.play();overlay.classList.add('hidden');}else{video.pause();overlay.classList.remove('hidden');} });
+    document.querySelectorAll('.speed-btn').forEach(btn => {
+      btn.addEventListener('click', () => { video.playbackRate=parseFloat(btn.dataset.speed); document.querySelectorAll('.speed-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); });
+    });
+
+    /* Grid Canvas */
+    const canvas=document.getElementById('gridCanvas'), ctx=canvas.getContext('2d'); let gW,gH;
+    function resizeCanvas(){gW=canvas.width=canvas.parentElement.offsetWidth;gH=canvas.height=canvas.parentElement.offsetHeight;}
+    resizeCanvas(); window.addEventListener('resize',resizeCanvas);
+    function drawGrid(){
+      ctx.clearRect(0,0,gW,gH); const s=60; ctx.strokeStyle='rgba(0,240,112,0.04)'; ctx.lineWidth=1;
+      for(let x=0;x<=gW;x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,gH);ctx.stroke();}
+      for(let y=0;y<=gH;y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(gW,y);ctx.stroke();}
+      const t=Date.now()*0.001;
+      for(let x=0;x<=gW;x+=s){for(let y=0;y<=gH;y+=s){const d=Math.sqrt((x-gW/2)**2+(y-gH/2)**2),p=Math.sin(t*2-d*0.005)*0.5+0.5;ctx.fillStyle=`rgba(0,240,112,${0.03+p*0.08})`;ctx.beginPath();ctx.arc(x,y,1.5+p,0,Math.PI*2);ctx.fill();}}
+      requestAnimationFrame(drawGrid);
+    }
+    drawGrid();
+
+    /* Parallax */
+    const heroGlow=document.querySelector('.hero-glow');
+    window.addEventListener('scroll',()=>{if(window.scrollY<innerHeight*2)heroGlow.style.transform=`translateX(-50%) translateY(${scrollY*0.3}px)`;},{passive:true});
+  </script>
+</body>
+</html>
