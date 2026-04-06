@@ -202,8 +202,8 @@
       background: var(--bg-card); transition: all 0.4s var(--ease-out);
     }
     .testimonial-card:hover { border-color: var(--border-hover); box-shadow: 0 0 30px rgba(0,240,112,0.08); transform: translateY(-4px); }
-    .testimonial-video-wrap { position: relative; aspect-ratio: 9/16; max-height: 500px; }
-    .testimonial-video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .testimonial-video-wrap { position: relative; aspect-ratio: 16/9; }
+    .testimonial-video-wrap video { width: 100%; height: 100%; object-fit: contain; display: block; background: #000; }
     .testimonial-overlay {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
       background: rgba(10,15,30,0.35); transition: opacity 0.4s; cursor: none;
@@ -216,6 +216,41 @@
     }
     .testimonial-play:hover { transform: scale(1.1); }
     .testimonial-play svg { width: 24px; height: 24px; fill: var(--bg-deep); margin-left: 3px; }
+
+    /* ============================================================
+       LEADMAGNET (step 3)
+    ============================================================ */
+    .leadmagnet-section { padding: 60px 0 var(--section-pad); text-align: center; }
+    .leadmagnet-step { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 40px; }
+    .leadmagnet-step strong { color: var(--accent-green); font-style: italic; }
+    .leadmagnet-card {
+      max-width: 640px; margin: 0 auto; background: linear-gradient(135deg, rgba(0,240,112,0.1), rgba(0,240,112,0.04));
+      border: 1px solid rgba(0,240,112,0.2); border-radius: 24px;
+      padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 56px);
+      position: relative; overflow: hidden;
+    }
+    .leadmagnet-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(255,255,255,0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .leadmagnet-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+    .leadmagnet-card h3 { font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .leadmagnet-card p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 32px; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 10px; padding: 18px 40px;
+      background: var(--accent-green); color: var(--bg-deep);
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      border-radius: 12px; border: none; cursor: pointer; transition: all 0.3s var(--ease-out);
+      text-decoration: none; position: relative; overflow: hidden;
+    }
+    .btn-download::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%); animation: shimmer 3s infinite;
+    }
+    .btn-download:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 30px rgba(0,240,112,0.4); }
+    .leadmagnet-badge { margin-top: 16px; font-size: 0.85rem; color: var(--text-muted); }
 
     /* ============================================================
        HERO (below video)
@@ -402,6 +437,34 @@
             </div>
           </div>
         </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-video-wrap">
+            <video id="testimonialVideo2" src="client2.mp4" playsinline controls preload="metadata"></video>
+            <div class="testimonial-overlay" id="testimonialOverlay2" role="button" aria-label="Lancer le témoignage" tabindex="0">
+              <div class="testimonial-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ============================================================
+       LEADMAGNET (step 3)
+  ============================================================ -->
+  <section class="leadmagnet-section" id="ressource">
+    <div class="container">
+      <p class="leadmagnet-step reveal"><strong>Étape 3/3 :</strong> téléchargez votre ressource offerte</p>
+      <div class="leadmagnet-card reveal reveal-delay-1">
+        <span class="leadmagnet-icon">&#127381;</span>
+        <h3>Le Guide des 10 Automatisations<br>qui font gagner 5h/semaine</h3>
+        <p>Les automatisations exactes que j'installe chez mes clients pour éliminer les tâches répétitives et libérer du temps dès le premier mois.</p>
+        <a href="synkronis_leadmagnet.pdf" download="Synkronis_Guide_Automatisation.pdf" class="btn-download">
+          &#11015;&#65039; Obtenir ma ressource gratuite
+        </a>
+        <p class="leadmagnet-badge">&#128274; PDF · 100% gratuit · Accès immédiat</p>
       </div>
     </div>
   </section>
@@ -424,12 +487,11 @@
         Je conçois des systèmes no-code & IA sur mesure qui éliminent vos tâches répétitives et génèrent du ROI dès le 1er mois.
       </p>
       <div class="hero-ctas reveal reveal-delay-3">
-        <a href="https://calendly.com/contact-synkronis/30min" class="btn-primary btn-large" target="_blank" rel="noopener">&#128197; Réserver mon audit gratuit</a>
         <a href="#steps" class="btn-secondary btn-large">Voir comment ça marche &darr;</a>
       </div>
       <div class="hero-stats reveal reveal-delay-4">
         <div class="stat-item"><div class="stat-number" data-target="35">0</div><div class="stat-label">Projets livrés</div></div>
-        <div class="stat-item"><div class="stat-number" data-target="4" data-suffix="h">0</div><div class="stat-label">Économisées / semaine</div></div>
+        <div class="stat-item"><div class="stat-number" data-target="5" data-suffix="h">0</div><div class="stat-label">Économisées / semaine</div></div>
         <div class="stat-item"><div class="stat-number" data-target="100" data-suffix="%">0</div><div class="stat-label">Satisfaction</div></div>
         <div class="stat-item"><div class="stat-number" data-target="1" data-suffix="er mois" data-prefix="Dès le ">0</div><div class="stat-label">ROI Garanti</div></div>
       </div>
@@ -440,22 +502,44 @@
   <section class="marquee-section" aria-label="Intégrations partenaires">
     <p class="marquee-title reveal">Intégrations avec vos outils actuels</p>
     <div class="marquee-track" aria-hidden="true">
-      <span class="marquee-item">Make <span class="marquee-dot"></span></span>
-      <span class="marquee-item">n8n <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Zapier <span class="marquee-dot"></span></span>
-      <span class="marquee-item">OpenAI <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Salesforce <span class="marquee-dot"></span></span>
       <span class="marquee-item">HubSpot <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Stripe <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Google Drive <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gmail <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Microsoft <span class="marquee-dot"></span></span>
+      <span class="marquee-item">LinkedIn <span class="marquee-dot"></span></span>
       <span class="marquee-item">Airtable <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Google Workspace <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Make <span class="marquee-dot"></span></span>
-      <span class="marquee-item">n8n <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Zapier <span class="marquee-dot"></span></span>
-      <span class="marquee-item">OpenAI <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Slack <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Canva <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Trello <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Outlook <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Shopify <span class="marquee-dot"></span></span>
+      <span class="marquee-item">WordPress <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Mailchimp <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Dropbox <span class="marquee-dot"></span></span>
+      <span class="marquee-item">ClickUp <span class="marquee-dot"></span></span>
+      <span class="marquee-item">PayPal <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Salesforce <span class="marquee-dot"></span></span>
       <span class="marquee-item">HubSpot <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Stripe <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Google Drive <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gmail <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Microsoft <span class="marquee-dot"></span></span>
+      <span class="marquee-item">LinkedIn <span class="marquee-dot"></span></span>
       <span class="marquee-item">Airtable <span class="marquee-dot"></span></span>
-      <span class="marquee-item">Google Workspace <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Slack <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Notion <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Canva <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Trello <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Outlook <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Shopify <span class="marquee-dot"></span></span>
+      <span class="marquee-item">WordPress <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Mailchimp <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Dropbox <span class="marquee-dot"></span></span>
+      <span class="marquee-item">ClickUp <span class="marquee-dot"></span></span>
+      <span class="marquee-item">PayPal <span class="marquee-dot"></span></span>
     </div>
   </section>
   <div class="section-sep"></div>
@@ -533,10 +617,10 @@
   <section class="cta-central">
     <div class="container">
       <div class="cta-central-inner reveal">
-        <h2>Combien coûte une heure perdue en tâches répétitives ?</h2>
-        <p class="cta-sub">Mes clients économisent en moyenne 4h par semaine dès le 1er mois. L'audit est gratuit. La décision vous appartient.</p>
+        <h2>Pour maximiser la valeur de notre futur échange</h2>
+        <p class="cta-sub">Mes clients économisent en moyenne 5h par semaine dès le 1er mois. L'audit est gratuit. La décision vous appartient.</p>
         <a href="https://calendly.com/contact-synkronis/30min" class="btn-cta-huge" target="_blank" rel="noopener">&#128197; Réserver mon audit offert maintenant &rarr;</a>
-        <p class="cta-reassurance">&#10003; Gratuit &nbsp; &#10003; Sans engagement &nbsp; &#10003; Réponse sous 24h</p>
+        <p class="cta-reassurance">&#10003; Gratuit &nbsp; &#10003; Sans engagement</p>
       </div>
     </div>
   </section>
